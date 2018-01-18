@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Helpers.Forms
+namespace Leaf.Forms
 {
     public static class TaskbarProgress
     {
@@ -15,9 +15,9 @@ namespace Helpers.Forms
             Paused = 0x8
         }
 
-        [ComImportAttribute()]
-        [GuidAttribute("ea1afb91-9e28-4b86-90e9-9e9f8a5eefaf")]
-        [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+        [ComImport]
+        [Guid("ea1afb91-9e28-4b86-90e9-9e9f8a5eefaf")]
+        [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         private interface ITaskbarList3
         {
             // ITaskbarList
@@ -38,14 +38,14 @@ namespace Helpers.Forms
 
             // ITaskbarList3
             [PreserveSig]
-            void SetProgressValue(IntPtr hwnd, UInt64 ullCompleted, UInt64 ullTotal);
+            void SetProgressValue(IntPtr hwnd, ulong ullCompleted, ulong ullTotal);
             [PreserveSig]
             void SetProgressState(IntPtr hwnd, TaskbarStates state);
         }
 
-        [GuidAttribute("56FDF344-FD6D-11d0-958A-006097C9A090")]
-        [ClassInterfaceAttribute(ClassInterfaceType.None)]
-        [ComImportAttribute()]
+        [Guid("56FDF344-FD6D-11d0-958A-006097C9A090")]
+        [ClassInterface(ClassInterfaceType.None)]
+        [ComImport]
         private class TaskbarInstance
         {
         }

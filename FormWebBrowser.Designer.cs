@@ -1,4 +1,4 @@
-﻿namespace ForumReposter
+﻿namespace Leaf.Forms
 {
     partial class FormWebBrowser
     {

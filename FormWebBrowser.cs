@@ -3,16 +3,14 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using Helpers.Forms;
-using Helpers.IO;
-using Work.Items;
 
-namespace ForumReposter
+namespace Leaf.Forms
 {
     public partial class FormWebBrowser : Form
     {
+        // TODO: 
         //public CookieContainer Cookies { get; private set; }
-        public SteamSession Session { get; private set; }
+        //public SteamSession Session { get; private set; }
         
         public FormWebBrowser()
         {
@@ -121,7 +119,8 @@ namespace ForumReposter
             else
                 userName = owner[0].InnerText;
 
-            Session = new SteamSession(cookieContainer, userName);
+            //Session = new SteamSession(cookieContainer, userName);
+
             // Session.Save();
             // BinarySerializer.Serialize(Session, "session.dat");
             //Session.Serialize();

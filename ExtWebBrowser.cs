@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace Helpers.Forms
+namespace Leaf.Forms
 {
     public static class ExtWebBrowser
     {
@@ -17,16 +17,24 @@ namespace Helpers.Forms
             // Set the appropriate Internet Explorer version
             if (browserVer >= 12) // Edge
                 regVal = 12001;
-            else if (browserVer == 11)
-                regVal = 11001;
-            else if (browserVer == 10)
-                regVal = 10001;
-            else if (browserVer == 9)
-                regVal = 9999;
-            else if (browserVer == 8)
-                regVal = 8888;
-            else
-                regVal = 7000;
+            else switch (browserVer)
+            {
+                case 11:
+                    regVal = 11001;
+                    break;
+                case 10:
+                    regVal = 10001;
+                    break;
+                case 9:
+                    regVal = 9999;
+                    break;
+                case 8:
+                    regVal = 8888;
+                    break;
+                default:
+                    regVal = 7000;
+                    break;
+            }
 
             // Set the actual key
             var key = Registry.CurrentUser.OpenSubKey(
