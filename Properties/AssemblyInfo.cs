@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("Leaf.Forms")]
-[assembly: AssemblyDescription("https://github.com/grandsilence/Leaf.Forms")]
+[assembly: AssemblyDescription("https://github.com/csharp-leaf/Leaf.Forms")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kelog Studio")]
 [assembly: AssemblyProduct("Leaf.Forms")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
