@@ -3,7 +3,7 @@ using Microsoft.Win32;
 
 namespace Leaf.Forms
 {
-    public static class ExtWebBrowser
+    public static class WebBrowserExtension
     {
         /// <summary>
         /// Activate latest engine of IE WebView component. 
