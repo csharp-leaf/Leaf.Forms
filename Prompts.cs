@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Leaf.Forms
 {
-    public static class MessageBoxes
+    public static class Prompts
     {
         /// <summary>
         /// Запрашивает подтвержение от пользователя на принудительный выход из программы, с возможной потерей результатов.
@@ -12,7 +12,7 @@ namespace Leaf.Forms
         /// <returns>
         /// Вернет истину если пользователь согласился на принудительный выход из программы и резкую остановку работы, без сохранения результатов.
         /// </returns>
-        public static bool WorkCancelPrompt()
+        public static bool ExitWorkCancel()
         {
             var result = MessageBox.Show(
                 "ВНИМАНИЕ: Возможна потеря результатов работы!" + Environment.NewLine +
