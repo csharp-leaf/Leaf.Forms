@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RichTextBoxExtensions.cs" />
     <Compile Include="WebBrowserExtension.cs" />
     <Compile Include="FormWebBrowser.cs">
       <SubType>Form</SubType>
