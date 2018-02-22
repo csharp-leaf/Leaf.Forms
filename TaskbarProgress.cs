@@ -46,10 +46,9 @@ namespace Leaf.Forms
         [Guid("56FDF344-FD6D-11d0-958A-006097C9A090")]
         [ClassInterface(ClassInterfaceType.None)]
         [ComImport]
-        private class TaskbarInstance
-        {
-        }
+        private class TaskbarInstance {}
 
+        // ReSharper disable once SuspiciousTypeConversion.Global
         private static readonly ITaskbarList3 Instance = (ITaskbarList3)new TaskbarInstance();
         private static readonly bool TaskbarSupported = Environment.OSVersion.Version >= new Version(6, 1);
 

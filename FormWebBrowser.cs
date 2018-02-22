@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Leaf.Forms
@@ -53,8 +50,8 @@ namespace Leaf.Forms
             tmrWatcher.Start();
         }
 
-        private const int InternetCookieHttponly = 0x2000;
-
+        //private const int InternetCookieHttponly = 0x2000;
+        /*
         private static CookieContainer GetCookieContainer(string baseUrl)
         {
             var uri = new Uri(baseUrl);
@@ -81,7 +78,7 @@ namespace Leaf.Forms
             cookies.SetCookies(uri, cookieData.ToString().Replace(';', ','));
             return cookies;
         }
-
+        */
         private void ReportError(string message, bool panic = true)
         {
             MessageBox.Show(message, "Ошибка", MessageBoxButtons.OK,
@@ -102,18 +99,18 @@ namespace Leaf.Forms
             
             tmrWatcher.Stop();
 
-            var cookieContainer = GetCookieContainer("https://partner.steamgames.com/");
+            //var cookieContainer = GetCookieContainer("https://partner.steamgames.com/");
             var owner = wb.Document.GetElementById("landingHeader")?.GetElementsByTagName("h1");
 
-            string userName = null;
+            //string userName = null;
             if (owner == null || owner.Count == 0 || owner[0] == null)
             {
                 ReportError("Не могу определить имя аккаунта, ничего страшного." +
                             " Просто не будет отображаться имя аккаунта в программе", 
                             panic: false);
             }
-            else
-                userName = owner[0].InnerText;
+            //else
+              //  userName = owner[0].InnerText;
 
             //Session = new SteamSession(cookieContainer, userName);
 
