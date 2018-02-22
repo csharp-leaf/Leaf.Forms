@@ -3,7 +3,7 @@ using Microsoft.Win32;
 
 namespace Leaf.Forms
 {
-    public static class WebBrowserExtension
+    public static class WebBrowserExtensions
     {
         /// <summary>
         /// Activate latest engine of IE WebView component. 
@@ -37,16 +37,16 @@ namespace Leaf.Forms
             }
 
             // Set the actual key
-            var key = Registry.CurrentUser.OpenSubKey(
-                @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true);
-            if (key == null)
-                return false;
-            
-            // Set newest IE Version
-            key.SetValue(System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".exe", regVal,
-                RegistryValueKind.DWord);
-            key.Close();
-            key.Dispose();
+            using (var key = Registry.CurrentUser.OpenSubKey(
+                @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true))
+            {
+                if (key == null)
+                    return false;
+
+                // Set newest IE Version
+                key.SetValue(System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".exe", regVal,
+                    RegistryValueKind.DWord);
+            }
 
             return true;
         }

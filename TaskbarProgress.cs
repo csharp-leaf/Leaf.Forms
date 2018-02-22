@@ -50,19 +50,19 @@ namespace Leaf.Forms
         {
         }
 
-        private static readonly ITaskbarList3 _taskbarInstance = (ITaskbarList3)new TaskbarInstance();
+        private static readonly ITaskbarList3 Instance = (ITaskbarList3)new TaskbarInstance();
         private static readonly bool TaskbarSupported = Environment.OSVersion.Version >= new Version(6, 1);
 
         public static void SetProgressState(this Form form, TaskbarStates taskbarState)
         {
             if (TaskbarSupported)
-                _taskbarInstance.SetProgressState(form.Handle, taskbarState);
+                Instance.SetProgressState(form.Handle, taskbarState);
         }
 
         public static void SetProgressValue(this Form form, double progressValue, double progressMax)
         {
             if (TaskbarSupported)
-                _taskbarInstance.SetProgressValue(form.Handle, (ulong)progressValue, (ulong)progressMax);
+                Instance.SetProgressValue(form.Handle, (ulong)progressValue, (ulong)progressMax);
         }
     }
 }

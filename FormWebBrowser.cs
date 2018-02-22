@@ -53,37 +53,32 @@ namespace Leaf.Forms
             tmrWatcher.Start();
         }
 
-        #region WinAPI
-        [DllImport("wininet.dll", SetLastError = true)]
-        private static extern bool InternetGetCookieEx(string url, string cookieName, StringBuilder cookieData,
-            ref int size, int dwFlags, IntPtr lpReserved);
         private const int InternetCookieHttponly = 0x2000;
-        #endregion
 
         private static CookieContainer GetCookieContainer(string baseUrl)
         {
             var uri = new Uri(baseUrl);
-            CookieContainer cookies = null;
 
             // Determine the size of the cookie
             int datasize = 8192 * 16;
             var cookieData = new StringBuilder(datasize);
-            if (!InternetGetCookieEx(baseUrl, null, cookieData, ref datasize, InternetCookieHttponly, IntPtr.Zero))
+            if (!NativeMethods.InternetGetCookieEx(baseUrl, null, cookieData, ref datasize, InternetCookieHttponly, IntPtr.Zero))
             {
                 if (datasize < 0)
                     return null;
                 
                 // Allocate stringbuilder large enough to hold the cookie
                 cookieData = new StringBuilder(datasize);
-                if (!InternetGetCookieEx(baseUrl, null, cookieData, ref datasize, InternetCookieHttponly,
+                if (!NativeMethods.InternetGetCookieEx(baseUrl, null, cookieData, ref datasize, InternetCookieHttponly,
                     IntPtr.Zero)) 
                     return null;
             }
-            if (cookieData.Length > 0)
-            {
-                cookies = new CookieContainer();
-                cookies.SetCookies(uri, cookieData.ToString().Replace(';', ','));
-            }
+
+            if (cookieData.Length <= 0)
+                return null;
+
+            var cookies = new CookieContainer();
+            cookies.SetCookies(uri, cookieData.ToString().Replace(';', ','));
             return cookies;
         }
 
@@ -98,6 +93,7 @@ namespace Leaf.Forms
 
         private void tmrWatcher_Tick(object sender, EventArgs e)
         {
+            // TODO: universal solution
             if (wb == null || wb.Document == null || wb.Document.Body == null ||
                 !wb.Document.Body.InnerHtml.Contains("https://partner.steamgames.com/login/logout"))
             {
