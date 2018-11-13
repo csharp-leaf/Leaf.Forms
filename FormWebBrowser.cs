@@ -107,7 +107,7 @@ namespace Leaf.Forms
             {
                 ReportError("Не могу определить имя аккаунта, ничего страшного." +
                             " Просто не будет отображаться имя аккаунта в программе", 
-                            panic: false);
+                            false);
             }
             //else
               //  userName = owner[0].InnerText;

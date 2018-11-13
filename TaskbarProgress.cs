@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+// ReSharper disable UnusedMember.Global
 
 namespace Leaf.Forms
 {
